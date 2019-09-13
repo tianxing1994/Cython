@@ -4,25 +4,23 @@
 
 using namespace std;
 
-
 class HelloWorld
 {
     public:
-        void helloWorld();
+        static void helloWorld(char *c);
 };
 
 
-void HelloWorld::helloWorld(){
-    cout << "C++ Compile to dotso file: <我想从 Python 传一个字符串进来, 但是不知道怎么实现.>" << endl;
+void HelloWorld::helloWorld(char *c){
+    cout << "C++ HelloWorld::helloWorld" << endl;
+    cout << c << endl;
 };
 
 
 extern "C"
 {
-    // 因为 Python ctypes 只能调用 C 语言代码, 所以这里需要将 C++ 代码转成 C 的形式.
-    // 具体的道理, 我也不会.
     HelloWorld obj;
-    void helloWorld(){
-        obj.helloWorld();
+    void helloWorld(char *c){
+        obj.helloWorld(c);
     }
 }
